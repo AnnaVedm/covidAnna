@@ -110,7 +110,7 @@ namespace covidAnna
                 },
                 new StackedAreaSeries<int>
                 {
-                    Name = "Removed",
+                    Name = "Recovered",
                     Fill = new SolidColorPaint(SKColors.Gray),
                     Values = RecoveredSpisok
                 },
