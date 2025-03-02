@@ -17,7 +17,7 @@
 		<!--Первый столбец это график-->
 		<StackPanel Grid.Column="0">
 			<!--Тут будет график-->
-			<lvc:CartesianChart Width="500" Height="270" Background="Black" Grid.Row="0"
+			<lvc:CartesianChart Width="500" Height="300" Background="Black" Grid.Row="0"
 								HorizontalAlignment="Left" Margin="10 0 0 0"
 								Series="{Binding Series}" Foreground="White" LegendPosition="Bottom">
 			</lvc:CartesianChart>
@@ -25,7 +25,8 @@
 			<StackPanel Orientation="Horizontal" Spacing="10" Margin="10">
 				<Button Content="Начать" Background="White"
 						Click="StartSimulation_ButtonClick"/>
-				<Button Content="Остановить" Background="White"/>
+				<Button Content="Остановить" Background="White"
+						Click="StopSimulation_ButtonClick"/>
 			</StackPanel>
 		</StackPanel>
 

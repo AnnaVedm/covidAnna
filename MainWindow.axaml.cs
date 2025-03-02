@@ -27,8 +27,8 @@ namespace covidAnna
 
         private List<Person> _people = new List<Person>();
 
-        private DispatcherTimer _timer;
-        private DispatcherTimer _dayTimer;
+        private DispatcherTimer _timer; //обновление движения
+        private DispatcherTimer _dayTimer; //обнновление дней и соответств статусов заражения
 
         //списки для привязки к графику
         public ObservableCollection<int> SusceptibleSpisok { get; set; } = new ObservableCollection<int>();
@@ -117,7 +117,7 @@ namespace covidAnna
                 new StackedAreaSeries<int>
                 {
                     Name = "Dead",
-                    Fill = new SolidColorPaint(SKColors.DarkViolet),
+                    Fill = new SolidColorPaint(SKColors.Purple),
                     Values = DeadSpisok
                 }
             };
@@ -234,6 +234,32 @@ namespace covidAnna
             _covidModel.Start();
             _timer.Start();
             _dayTimer.Start();
+        }
+
+        private void StopSimulation_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            _timer.Stop();
+            _dayTimer.Stop();
+
+            Days = 0;
+            EllipseMethods._infectionEllipses.Clear();
+            EllipseMethods._personEllipses.Clear();
+
+            _covidModel.InfectChance = 0;
+            _covidModel.InfectRadius = 0;
+
+            _covidModel.People.Clear();
+            _people.Clear();
+
+            SimulationPole.Children.Clear();
+
+            R = 0;
+            ActiveCases = 0;
+
+            SusceptibleSpisok.Clear();
+            InfectedSpisok.Clear();
+            RecoveredSpisok.Clear();
+            DeadSpisok.Clear();
         }
 
         private void RemoveInfectionRadiusEllipse(Person person) //удаляем эллипс-радиус с канваса и из списка

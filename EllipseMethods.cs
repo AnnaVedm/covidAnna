@@ -84,6 +84,5 @@ namespace covidAnna
                 Canvas.SetTop(infectionRadiusEllipse, person.Coordinates.Y - infectRadius);
             }
         }
-
     }
 }
